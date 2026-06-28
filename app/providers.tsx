@@ -12,7 +12,7 @@ const config = getDefaultConfig({
   projectId: '59fadeef2d23920bdf1da920bc0ed472', // Replace with your Project ID from cloud.walletconnect.com
   chains: [mainnet],
   transports: {
-    [mainnet.id]: http(),
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/LWAhU7eqPB5mf4_vnW_7c'),
   },
 });
 
