@@ -45,9 +45,14 @@ export default function MintCard() {
   const { isLoading: isConfirming, isSuccess: isConfirmed } = 
     useWaitForTransactionReceipt({ 
       hash,
-      // Refetch total supply once transaction is confirmed to update the UI
-      onSuccess: () => refetchTotalSupply() 
     });
+
+  // 2. Trigger the supply refetch using a useEffect instead
+  useEffect(() => {
+    if (isConfirmed) {
+      refetchTotalSupply();
+    }
+  }, [isConfirmed, refetchTotalSupply]);
 
   // Safe data parsing
   const currentMinted = totalSupply ? Number(totalSupply) : 0;
@@ -76,9 +81,9 @@ export default function MintCard() {
         <img src="/Logo.png" alt="Onchain Color" className="w-full h-full object-contain" />
       </div>
       
-      <h2 className="text-3xl font-light mb-2">Claim Your Color</h2>
+      <h2 className="text-3xl font-light mb-2">Mint Your Color</h2>
       <p className="text-zinc-400 mb-6 text-sm">
-        A purely onchain aesthetic experience.
+        Fully Onchain collection of 10,000 unique colors on Ethereum.
       </p>
 
       {/* 2. Elegant Progress Tracker */}
