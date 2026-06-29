@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-  title: "Onchain Color",
-  description: "Just color. Fully onchain.",
-  keywords: ["NFT", "Mint", "Ethereum", "Onchain Color", "Crypto Art"],
+  title: "Onchain Color | Mint",
+  description: "Fully Onchain collection of 10,000 unique colors on Ethereum.",
   icons: {
-    icon: "/Logo_with_BG.png",       // Sets the standard favicon
-    apple: "/Logo_with_BG.png",      // Optional: Sets the icon for iOS home screen bookmarks
+    icon: "/Logo_with_BG.png", // Links to public/Logo_with_BG.png
   },
 };
 
@@ -19,10 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-neutral-950">
-        <Providers>
-          {children}
-        </Providers>
+      <body className={`${inter.className} bg-black text-white antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,15 +1,243 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Custom keyframes for the continuous flowing rainbow gradient */
-@keyframes rainbow-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* 🌈 AURORA BACKGROUND */
+.aurora {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  filter: blur(120px);
+  opacity: 0.5;
+  animation: float 12s infinite ease-in-out;
 }
 
-/* Glassmorphism rainbow background styling */
-.rainbow-glass-bg {
-  background: linear-gradient(-45deg, #ff3366, #ff00ea, #2400ff, #00d4ff, #00ff66, #ffcc00);
-  background-size: 300% 300%;
-  animation: rainbow-flow 8s ease infinite;
+.aurora1 {
+  background: #ff00ff;
+  top: -100px;
+  left: -100px;
+}
+
+.aurora2 {
+  background: #00ffff;
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 2s;
+}
+
+.aurora3 {
+  background: #7c3aed;
+  top: 40%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(60px, -40px) scale(1.2);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+body {
+  margin: 0;
+  background: black;
+  overflow-x: hidden;
+}
+
+/* background glow */
+.bg {
+  position: fixed;
+  inset: -200px;
+  background:
+    radial-gradient(circle at 20% 20%, #ff00ff33, transparent 40%),
+    radial-gradient(circle at 80% 30%, #00ffff33, transparent 40%),
+    radial-gradient(circle at 50% 80%, #7c3aed33, transparent 50%);
+  filter: blur(80px);
+  animation: drift 10s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes drift {
+  0% { transform: translate(-20px, -20px) scale(1); }
+  100% { transform: translate(20px, 30px) scale(1.1); }
+}
+
+.gridNoise {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.06;
+  z-index: -1;
+}
+
+.floatingText {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-weight: bold;
+  opacity: 0.03;
+  color: white;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.heroBig {
+  position: fixed;
+  top: 120px;
+  left: 60px;
+
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 6px;
+
+  opacity: 0.08;
+  color: white;
+
+  pointer-events: none;
+}
+
+.subHero {
+  position: fixed;
+  top: 210px;
+  left: 62px;
+
+  font-size: 14px;
+  opacity: 0.4;
+  letter-spacing: 2px;
+}
+
+.page {
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg::before {
+  content: "";
+  position: fixed;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 0, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 40%, rgba(0, 255, 255, 0.14), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(124, 58, 237, 0.12), transparent 50%);
+  filter: blur(80px);
+  animation: floatAurora 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes floatAurora {
+  0% {
+    transform: translate(-2%, -2%) scale(1);
+  }
+  100% {
+    transform: translate(2%, 3%) scale(1.05);
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.mintBtn {
+  position: relative;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  background: #000;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mintBtn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: conic-gradient(
+    #ff3b3b,   /* red */
+    #ff8a00,   /* orange */
+    #ffd000,   /* yellow */
+    #2ee59d,   /* green */
+    #00d4ff,   /* cyan */
+    #4f46e5,   /* indigo */
+    #a855f7,   /* purple */
+    #ff3b3b
+  );
+
+  animation: spin 3s linear infinite;
+  z-index: -2;
+}
+
+.mintBtn::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 12px;
+  background: #000;
+  z-index: -1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.qtyBtn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.qtyNumber {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.qtyMini {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
 }
