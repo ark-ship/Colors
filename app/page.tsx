@@ -83,7 +83,7 @@ export default function Home() {
       {/* Elegant Footer Section */}
       <footer className="w-full py-6 flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto border-t border-white/5 z-20 text-xs tracking-widest text-zinc-500 gap-4 backdrop-blur-sm">
         <div className="font-light uppercase">
-          © 2026 onchain color allright
+          © 2026 onchain color all rights reserved
         </div>
         
         <div className="flex space-x-8 font-medium">
